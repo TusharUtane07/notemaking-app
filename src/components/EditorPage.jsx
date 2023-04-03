@@ -4,6 +4,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { collection, doc, onSnapshot, updateDoc } from 'firebase/firestore';
 import { database } from '../FirebaseConfig';
+import { toast } from 'react-toastify';
 
 
 const EditorPage = () => {
@@ -27,9 +28,29 @@ const EditorPage = () => {
             })
             .then(()=>{
                 // alert("Data updated")
+                toast.success("Data updated",{
+                    position: "bottom-right",
+                    autoClose: 500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                  })
             })
             .catch((error)=>{
                 // alert("Error Occured!!", error)
+                toast.error("Error Occured!!",  {
+                    position: "bottom-right",
+                    autoClose: 500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                  })
             })
         }, 2000);
 

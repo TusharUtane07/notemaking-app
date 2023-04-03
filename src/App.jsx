@@ -4,6 +4,8 @@ import { Route, Routes } from "react-router-dom";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import EditorPage from "./components/EditorPage";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
 
@@ -19,6 +21,16 @@ const App = () => {
         <Route path="/editor/:id" element={<EditorPage />} />
       </Routes>
       </div>
+      <ToastContainer position="bottom-right"
+autoClose={500}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="colored"/>
     </div>
   );
 };
