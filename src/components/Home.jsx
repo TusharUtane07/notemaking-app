@@ -16,7 +16,6 @@ const Home = () => {
   const [isAdd, setIsAdd] = useState(false);
   const [title, setTitle] = useState("");
   const [docsData, setDocsData] = useState([]);
-  const [id, setId] = useState("");
 
   let userEmail = localStorage.getItem("userEmail");
   let userName = localStorage.getItem("name");
@@ -37,7 +36,7 @@ const Home = () => {
         draggable: true,
         progress: undefined,
         theme: "colored",
-      })
+      });
     });
   };
 
@@ -97,8 +96,7 @@ const Home = () => {
   }, []);
 
   const deleteDocument = (id) => {
-    deleteDoc(doc(database, `${userEmail}docs-data`, id))
-    .then(()=>{
+    deleteDoc(doc(database, `${userEmail}docs-data`, id)).then(() => {
       toast.success("Document Deleted", {
         position: "bottom-right",
         autoClose: 500,
@@ -108,8 +106,8 @@ const Home = () => {
         draggable: true,
         progress: undefined,
         theme: "colored",
-      })
-    })
+      });
+    });
     setTitle("");
   };
 
@@ -152,21 +150,22 @@ const Home = () => {
       ) : (
         <></>
       )}
-      <div className="mt-5 grid grid-cols-1 lg:grid-cols-3 lg:gap-5">
-        {docsData.map((doc) => {
+      <div className="mt-5 grid grid-cols-1 justify-center border-2 items-center border-[#0b2447] p-6">
+        {docsData.map((doc, index) => {
           return (
-            <div className="" key={doc.id}>
+            <div className="flex items-center justify-center" key={doc.id}>
               <div
-                className=" mt-2 border-2 border-[#0b2447] hover:bg-[#0b2447] hover:text-[#a5d7e8] lg:px-5 lg:text-2xl flex items-center justify-between cursor-pointer"
+                className=" hover:bg-[#0b2447] hover:text-[#a5d7e8] lg:px-5 lg:text-2xl flex items-center cursor-pointer"
                 onClick={() => openEditor(doc.id)}
               >
-                <h3>{doc?.title}</h3>
+                <h3>
+                  {++index}. {doc?.title}
+                </h3>
               </div>
-              <div className="h-8 hover:bg-red-400 cursor-pointer border-r-2  border-[#0b2447] border-l-2 border-b-2 flex items-center justify-center">
-                Delete
+              <div className="h-8 ml-2 cursor-pointer flex items-center justify-center">
                 <MdDeleteOutline
                   onClick={() => deleteDocument(doc.id)}
-                  className="text-xl "
+                  className="text-xl hover:text-red-700"
                 />
               </div>
             </div>
