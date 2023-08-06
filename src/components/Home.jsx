@@ -150,7 +150,7 @@ const Home = () => {
       ) : (
         <></>
       )}
-      <div className="mt-5 grid grid-cols-1 justify-center border-2 items-center border-[#0b2447] p-6">
+      <div className="mt-5 grid grid-cols-1 justify-center  items-center  p-6">
         {docsData.map((doc, index) => {
           return (
             <div className="flex items-center justify-center" key={doc.id}>
